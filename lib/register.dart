@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutterfrontend/config.dart';
-import 'package:flutterfrontend/home.dart';
 import 'package:flutterfrontend/login.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,7 +36,7 @@ class _RegisterState extends State<Register> {
           // ignore: use_build_context_synchronously
           Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => const Home()),
+            MaterialPageRoute(builder: (context) => const Login()),
             (route) => false,
           );
         } else if (json['status'] == false) {
