@@ -52,6 +52,30 @@ class _HomeState extends State<Home> {
     }
   }
 
+  void deleteTodo(id) async {
+    try {
+      var body = {
+        'id': id,
+      };
+
+      var res = await http.post(
+        Uri.parse(deleteTodoUrl),
+        headers: {"Content-Type": "application/json"},
+        body: jsonEncode(body),
+      );
+
+      var json = jsonDecode(res.body);
+
+      if (json['status'] == true) {
+        print("Deleted Successfully");
+        print(json['success']);
+        getUserAllTodos(userId);
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -82,6 +106,9 @@ class _HomeState extends State<Home> {
                   itemBuilder: (context, index) {
                     return userTodos.isNotEmpty
                         ? ListTile(
+                            onLongPress: () {
+                              deleteTodo(userTodos[index]['_id']);
+                            },
                             title: Text(userTodos[index]['title']),
                             subtitle: Text(userTodos[index]['desc']),
                           )

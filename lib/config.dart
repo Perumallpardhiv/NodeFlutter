@@ -3,3 +3,4 @@ const registerUrl = "${url}registration";
 const loginUrl = "${url}login";
 const createtodoUrl = "${url}storeTodo";
 const userAlltodo = "${url}getUserallTodoList";
+const deleteTodoUrl = "${url}deleteTodo";
