@@ -1,3 +1,3 @@
-# flutterfrontend
+# FlutterFrontend
 
 A new Flutter project.
